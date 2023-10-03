@@ -1,20 +1,40 @@
+# Cache objects
+packer_cache/
+
+# https://www.packer.io/guides/hcl/variables
+# Exclude all .pkrvars.hcl files, which are likely to contain sensitive data,
+# such as password, private keys, and other secrets. These should not be part of
+# version control as they are data points which are potentially sensitive and
+# subject to change depending on the environment.
+#
+*.pkrvars.hcl
+
+# For built boxes
+*.box
+
+# Existing ignored items:
+*.retry
+*.pem
+*.log
+
+# tf gitignore boilerplate:
 # Local .terraform directories
 **/.terraform/*
-
+**/.terraform.lock.*
 # .tfstate files
-*.tfstate
+**.tfstate
 *.tfstate.*
+.terraform*
 
 # Crash log files
 crash.log
-crash.*.log
 
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
+# Exclude all .tfvars files, which are likely to contain sentitive data, such as
+# password, private keys, and other secrets. These should not be part of version
+# control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
-*.tfvars
-*.tfvars.json
+#
+#*.tfvars
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
@@ -24,6 +44,7 @@ override.tf.json
 *_override.tf.json
 
 # Include override files you do wish to add to version control using negated pattern
+#
 # !example_override.tf
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
@@ -32,3 +53,18 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Added for tf version 0.14
+# .terraform.lock.hcl
+
+# ignore backend setup script:
+init_back_end.sh
+
+# macos .DS_Store
+.DS_Store
+
+# ignore VSCode config
+.vscode/*
+
+# ignore credentials
+init.sh
