@@ -24,6 +24,7 @@ variable "subnet_id" {
 
 variable "aws_policy_names" {
   type = list(string)
+  description = "Policy ARN, For AWS managed policies use 'aws:policy/<policyName>' and for customer managed policies use '<aws account id>:policy/<policyName>'"
 }
 
 variable "custom_tags" {
