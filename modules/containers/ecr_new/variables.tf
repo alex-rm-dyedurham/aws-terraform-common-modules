@@ -3,6 +3,15 @@ variable "repo_names" {
   type        = list(string)
 }
 
+variable "repository_read_write_access_arns" {
+  description = "List of arns that allow read and write access"
+  type        = list(string)
+}
+
+variable "prod_nodepool_arns" {
+  type        = list(string)
+}
+
 variable "image_tag_mutability" {
   description = "The tag mutability setting for the repository. Must be one of: MUTABLE or IMMUTABLE"
   type        = string
