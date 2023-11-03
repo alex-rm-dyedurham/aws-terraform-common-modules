@@ -4,7 +4,7 @@ module "ecr" {
 
   repository_name = var.repo_names[count.index]
 
-  repository_read_write_access_arns = var.repository_read_write_access_arns[count.index]
+  repository_read_write_access_arns = var.repository_read_write_access_arns
   repository_read_access_arns       = var.prod_nodepool_arns
   repository_lifecycle_policy = jsonencode({
     rules = [
