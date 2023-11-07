@@ -6,28 +6,23 @@ variable "repo_names" {
 variable "repository_read_write_access_arns" {
   description = "List of arns that allow read and write access"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "repository_read_access_arns" {
-  type        = list(string)
+  type    = list(string)
   default = []
 }
 
 variable "image_tag_mutability" {
   description = "The tag mutability setting for the repository. Must be one of: MUTABLE or IMMUTABLE"
   type        = string
-	default     = "IMMUTABLE"
-}
-
-variable "scan_on_push" {
-  description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned."
-   type        = string
+  default     = "IMMUTABLE"
 }
 
 variable "number_of_images" {
   description = "Number of images to retain"
-   type        = number
+  type        = number
 }
 
 variable "tag_status" {
