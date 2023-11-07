@@ -20,14 +20,13 @@ module "ecr" {
   ]
   repository_read_write_access_arns = []
   repository_read_access_arns       = []
-  scan_on_push                      = true
   number_of_images                  = 30
 
-  tag_status                        = "tagged"
-  tag_prefix_list                   = ["v"]
-  count_type                        = "imageCountMoreThan"
+  tag_status      = "tagged"
+  tag_prefix_list = ["v"]
+  count_type      = "imageCountMoreThan"
 
   # if tagged in not used then uncomment the following 2 lines and comment the above tag_status, tag_prefix_list and count_type parameters.
-#   tag_status                        = "untagged" # value "any" is also valid.
-#   count_type                        = "sinceImagePushed"
+  #   tag_status                        = "untagged" # value "any" is also valid.
+  #   count_type                        = "sinceImagePushed"
 }

@@ -2,7 +2,7 @@ locals {
   rules = coalescelist(local.imageCountMoreThan, local.sinceImagePushed)
 
   imageCountMoreThan = var.count_type == "imageCountMoreThan" ? local.count_type_imageCountMoreThan : null
-  sinceImagePushed = var.count_type == "sinceImagePushed" ? local.count_type_sinceImagePushed : null
+  sinceImagePushed   = var.count_type == "sinceImagePushed" ? local.count_type_sinceImagePushed : null
 
   count_type_imageCountMoreThan = [
     {
@@ -25,10 +25,10 @@ locals {
       rulePriority = 1,
       description  = "Keep the last ${var.number_of_images} images.",
       selection = {
-        tagStatus     = var.tag_status,
-        countType     = var.count_type,
-        countUnit     =  "days",
-        countNumber   = var.number_of_images
+        tagStatus   = var.tag_status,
+        countType   = var.count_type,
+        countUnit   = "days",
+        countNumber = var.number_of_images
       },
       action = {
         type = "expire"
@@ -38,7 +38,7 @@ locals {
 }
 
 module "ecr" {
-  count = length(var.repo_names)
+  count  = length(var.repo_names)
   source = "terraform-aws-modules/ecr/aws"
 
   repository_name = var.repo_names[count.index]
