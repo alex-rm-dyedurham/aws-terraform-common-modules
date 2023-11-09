@@ -50,7 +50,7 @@ module "ecr" {
   })
 
   tags = merge(
-    var.tags,
+    var.custom_tags,
     {
       "Name" : "${var.repo_names[count.index]}"
     }

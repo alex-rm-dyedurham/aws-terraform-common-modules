@@ -49,7 +49,7 @@ variable "count_type" {
   }
 }
 
-variable "tags" {
+variable "custom_tags" {
   description = "Map of custom tags to apply to each ECR repo."
   type        = map(string)
   default     = {}
