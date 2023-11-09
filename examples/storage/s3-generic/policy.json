@@ -1,0 +1,47 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EnforcedTLS",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::${bucket_name}/*",
+                "arn:aws:s3:::${bucket_name}"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        },
+        {
+            "Sid": "RootAccess",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::${aws_account_id}:root"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::${bucket_name}/*",
+                "arn:aws:s3:::${bucket_name}"
+            ]
+        },
+        {
+            "Sid": "DenyInsecureProtoliVersions",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::${bucket_name}/*",
+                "arn:aws:s3:::${bucket_name}"
+            ],
+            "Condition": {
+                "NumericLessThan": {
+                    "s3:TlsVersion": "1.2"
+                }
+            }
+        }
+    ]
+}
