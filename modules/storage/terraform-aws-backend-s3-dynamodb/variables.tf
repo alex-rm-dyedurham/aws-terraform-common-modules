@@ -11,4 +11,5 @@ variable "aws_backend_name" {
 variable "custom_tags" {
   description = "Custom Tags"
   type        = map(string)
+  default     = {}
 }
