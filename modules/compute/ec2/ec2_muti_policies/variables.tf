@@ -23,8 +23,14 @@ variable "subnet_id" {
 }
 
 variable "aws_policy_names" {
-  type = list(string)
+  type        = list(string)
   description = "Policy ARN, For AWS managed policies use 'aws:policy/<policyName>' and for customer managed policies use '<aws account id>:policy/<policyName>'"
+}
+
+variable "user_data" {
+  description = "The User Data script to run in each Instance at boot"
+  type        = string
+  default     = null
 }
 
 variable "custom_tags" {
