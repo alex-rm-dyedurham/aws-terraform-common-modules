@@ -46,10 +46,7 @@ resource "aws_instance" "ec2_instance" {
   instance_type        = var.instance_type
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
   subnet_id            = var.subnet_id
-  user_data = <<EOF
-#!/bin/bash
-sudo useradd dlc
-EOF
+  user_data            = base64encode("${var.user_data}")
 
   tags = merge(
     var.custom_tags,
