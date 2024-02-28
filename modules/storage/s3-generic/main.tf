@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "main" {
   bucket        = var.bucket_name
   tags          = var.custom_tags
-  force_destroy = true
+  force_destroy = var.force_destroy
 }
 
 resource "aws_s3_bucket_versioning" "enabled" {
@@ -31,5 +31,5 @@ resource "aws_s3_bucket_public_access_block" "public_access_configuration" {
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.main.id
-	policy = "${jsonencode(var.bucket_policy)}"
+  policy = jsonencode(var.bucket_policy)
 }
